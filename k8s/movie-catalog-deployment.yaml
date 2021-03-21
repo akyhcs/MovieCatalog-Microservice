@@ -5,7 +5,7 @@ metadata:
   labels:
     app: movie-catalog-service
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: movie-catalog-service
@@ -15,13 +15,11 @@ spec:
         app: movie-catalog-service
     spec:
       containers:
-      - name: movie-catalog-service
-        image: krsai01/mv-cat:v3
+      - name: movie-catalog-container
+        image:  akyhcs/movie-catalog-ms:latest
         ports:
         - containerPort: 8082
-          #env:
-          #- name: mysqlservice
-          #value: mysql-service
+         
 ---
 apiVersion: v1
 kind: Service
@@ -30,10 +28,9 @@ metadata:
   labels:
     app: movie-catalog-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 8082
     targetPort: 8082
-    nodePort: 32000
   selector:
     app: movie-catalog-service
