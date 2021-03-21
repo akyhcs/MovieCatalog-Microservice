@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: movie-info-service
-        image: krsai01/mv-info:v1
+        image: akyhcs/movie-info-microservice:latest
         ports:
         - containerPort: 8080
         env:
