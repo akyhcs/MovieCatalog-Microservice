@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ratings-data-service
-        image: krsai01/rt-data:v1
+        image: akyhcs/movie-rating-microservice:latest
         ports:
         - containerPort: 8081
         env:
